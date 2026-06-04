@@ -127,7 +127,7 @@ class SearchList extends StatelessWidget {
                   Text(
                     "Rating ${movie.voteAverage.toStringAsFixed(1)}",
                     style: TextStyle(
-                      color: secondaryColor.withValues(alpha: 0.6),
+                      color: secondaryColor.withValues(alpha:0.6),
                       fontSize: 13,
                     ),
                   ),
