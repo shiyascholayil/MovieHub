@@ -1,4 +1,4 @@
-# movieHub
+# moviehub
 
 A Flutter-based movie discovery application that allows users to explore trending, popular, and top-rated movies using the TMDb API. The app also includes secure authentication using Firebase and a smooth state-managed architecture using Riverpod.
 
