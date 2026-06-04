@@ -37,35 +37,53 @@ A Flutter-based movie discovery application that allows users to explore trendin
 ## Project Structure
 
 ```text
-     lib/ 
-     ├── models/ 
-     │   └── weather_model.dart
-     ├── screens/ 
-     │   ├── intro_screen.dart 
-     │   ├── location_page.dart 
-     │   └── weather_screen.dart 
-     │ 
-     ├── services/ 
-     │   ├── location_services.dart 
-     │   └── weather_services.dart  
-     ├── const.dart 
-     ├── custom_dialog.dart 
-     ├── elevated_style.dart 
-     ├── humidity_column.dart 
-     └── main.dart
+lib/
+│
+├── main.dart
+├── const.dart
+│
+├── models/
+│   └── movie.dart
+│
+├── riverpod/
+│   ├── auth_riverpod.dart
+│   └── movie_riverpod.dart
+│
+├── screens/
+│   ├── home_screen.dart
+│   ├── login_screen.dart
+│   ├── moviedetails_screen.dart
+│   ├── profile_screen.dart
+│   └── signup_screen.dart
+│
+├── services/
+│   ├── api_services.dart
+│   ├── auth_services.dart
+│   ├── permission_service.dart
+│   └── tmdb_services.dart
+│
+└── widgets/
+    ├── build_info.dart
+    ├── loading_widget.dart
+    ├── login_input_decoration.dart
+    ├── movie_card.dart
+    ├── movie_list.dart
+    ├── profile_card.dart
+    ├── search_list.dart
+    └── tab_content.dart
 
 ## Installation
 
 1. Clone the repository
 
 ```bash
-git clone https://github.com/shiyascholayil/weather-app.git
+git clone https://github.com/shiyascholayil/moviehub.git
 ```
 
 2. Navigate to the project
 
 ```bash
-cd weather-app
+cd moviehub
 ```
 
 3. Install dependencies
@@ -82,13 +100,11 @@ flutter run
 
 ## API
 
-This project uses the OpenWeather API to fetch real-time weather data.
-
+This project uses the TMDb API to fetch real-time movie data.
 ## Future Enhancements
 
-* Dark mode support
-* Weather notifications
-* Favorite locations
+* Favorite movies feature
+
 
 ## Author
 
