@@ -105,9 +105,7 @@ flutter run
 ## API
 
 This project uses the TMDb API to fetch real-time movie data.
-## Future Enhancements
 
-* Favorite movies feature
 
 
 ## Author
