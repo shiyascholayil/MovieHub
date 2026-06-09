@@ -40,23 +40,22 @@ A Flutter-based movie discovery application that allows users to explore trendin
 
 ```text
 lib/
-│
-├── main.dart
-├── const.dart
-│
 ├── models/
-│   └── movie.dart
+│   ├── movie.dart
+│   └── movie.g.dart
 │
 ├── riverpod/
 │   ├── auth_riverpod.dart
 │   └── movie_riverpod.dart
 │
 ├── screens/
+│   ├── favorite_screen.dart
 │   ├── home_screen.dart
 │   ├── login_screen.dart
+│   ├── main_screen.dart
 │   ├── moviedetails_screen.dart
 │   ├── profile_screen.dart
-│   └── signup_screen.dart
+│   └── sighup_screen.dart
 │
 ├── services/
 │   ├── api_services.dart
@@ -64,15 +63,18 @@ lib/
 │   ├── permission_service.dart
 │   └── tmdb_services.dart
 │
-└── widgets/
-    ├── build_info.dart
-    ├── loading_widget.dart
-    ├── login_input_decoration.dart
-    ├── movie_card.dart
-    ├── movie_list.dart
-    ├── profile_card.dart
-    ├── search_list.dart
-    └── tab_content.dart
+├── widget/
+│   ├── buildinfo.dart
+│   ├── loading_widget.dart
+│   ├── login_input_decoration.dart
+│   ├── movie_card.dart
+│   ├── movie_list.dart
+│   ├── profile_card.dart
+│   ├── search_list.dart
+│   └── tab_content.dart
+│
+├── const.dart
+└── main.dart
 
 ## Installation
 
