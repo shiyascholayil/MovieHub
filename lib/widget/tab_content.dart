@@ -32,7 +32,7 @@ class TabContent extends StatelessWidget {
               Icon(
                 Icons.error_outline,
                 size: 60,
-                color: inCorrectColor,
+                color: redColor,
               ),
               const SizedBox(height: 16),
               Text(

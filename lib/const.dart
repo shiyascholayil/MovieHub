@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 
 const Color primaryColor = Colors.white;
 const Color secondaryColor = Colors.black;
-const Color inCorrectColor = Colors.red;
-const Color loadingColor = Colors.grey;
+const Color redColor = Colors.red;
+const Color greyColor = Colors.grey;
+final Color greyShade600 = Colors.grey.shade600;
+final Color greyShade400 = Colors.grey.shade400;
+final Color greyShade500 = Colors.grey.shade500;
+final Color greyShade300 = Colors.grey.shade300;
 
 const TextStyle loginTextStyle = TextStyle(
   fontSize: 28.0,

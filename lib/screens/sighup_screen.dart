@@ -151,17 +151,23 @@ class _SighupScreenState extends ConsumerState<SighupScreen> {
                         const SizedBox(height: 10),
 
                         /// EMAIL FIELD
-                        
-                      TextFormField( controller: _emailController, 
-                      keyboardType: TextInputType.emailAddress, 
-                      decoration: 
-                      customInputDecoration(  "Enter your email",
-                        Icons.email_outlined, ), validator: (value) 
-                       { if (value == null || value.isEmpty) 
-                       { return 'Please enter email'; } 
-                       if (!value.contains('@')) 
-                       { return 'Please enter valid email'; } 
-                       return null; }, ),
+                        TextFormField(
+                          controller: _emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: customInputDecoration(
+                            "Enter your email",
+                            Icons.email_outlined,
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter email';
+                            }
+                            if (!value.contains('@')) {
+                              return 'Please enter valid email';
+                            }
+                            return null;
+                          },
+                        ),
 
                         _gap(24),
 
@@ -257,7 +263,7 @@ class _SighupScreenState extends ConsumerState<SighupScreen> {
                                                 "Registration Failed",
                                               ),
 
-                                              backgroundColor: inCorrectColor,
+                                              backgroundColor: redColor,
 
                                               behavior:
                                                   SnackBarBehavior.floating,

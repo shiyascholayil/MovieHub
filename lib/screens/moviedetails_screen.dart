@@ -7,10 +7,7 @@ import 'package:moviehub/widget/buidinfo.dart';
 class MovieDetailScreen extends StatelessWidget {
   final Movie movie;
 
-  const MovieDetailScreen({
-    required this.movie,
-    super.key,
-  });
+  const MovieDetailScreen({required this.movie, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +17,10 @@ class MovieDetailScreen extends StatelessWidget {
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
 
-        slivers: [
-          _buildAppBar(),
-          _buildBody(),
-        ],
+        slivers: [_buildAppBar(), _buildBody()],
       ),
     );
   }
-
-  /// ---------------- APP BAR ----------------
 
   SliverAppBar _buildAppBar() {
     return SliverAppBar(
@@ -44,17 +36,11 @@ class MovieDetailScreen extends StatelessWidget {
         background: Stack(
           fit: StackFit.expand,
 
-          children: [
-            _backdropImage(),
-            _gradientOverlay(),
-            _titleSection(),
-          ],
+          children: [_backdropImage(), _gradientOverlay(), _titleSection()],
         ),
       ),
     );
   }
-
-  /// BACK BUTTON
 
   Widget _backButton() {
     return Container(
@@ -65,20 +51,16 @@ class MovieDetailScreen extends StatelessWidget {
         shape: BoxShape.circle,
       ),
 
-      child: BackButton(
-        color: secondaryColor,
-      ),
+      child: BackButton(color: secondaryColor),
     );
   }
-
-  /// BACKDROP IMAGE
 
   Widget _backdropImage() {
     return Image.network(
       movie.fullBackDropUrl,
       fit: BoxFit.cover,
 
-      errorBuilder: (_,_,_) {
+      errorBuilder: (_, _, _) {
         return Container(
           color: primaryColor,
 
@@ -93,8 +75,6 @@ class MovieDetailScreen extends StatelessWidget {
       },
     );
   }
-
-  /// GRADIENT OVERLAY
 
   Widget _gradientOverlay() {
     return Container(
@@ -113,8 +93,6 @@ class MovieDetailScreen extends StatelessWidget {
     );
   }
 
-  /// TITLE SECTION
-
   Widget _titleSection() {
     return Positioned(
       left: 20,
@@ -131,10 +109,7 @@ class MovieDetailScreen extends StatelessWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
 
-            style: headingStyle.copyWith(
-              fontSize: 28,
-              height: 1.2,
-            ),
+            style: headingStyle.copyWith(fontSize: 28, height: 1.2),
           ),
 
           const SizedBox(height: 12),
@@ -145,10 +120,7 @@ class MovieDetailScreen extends StatelessWidget {
                 rating: movie.voteAverage / 2,
 
                 itemBuilder: (_, _) {
-                  return const Icon(
-                    Icons.star_rounded,
-                    color: Colors.black,
-                  );
+                  return const Icon(Icons.star_rounded, color: Colors.black);
                 },
 
                 itemCount: 5,
@@ -176,27 +148,20 @@ class MovieDetailScreen extends StatelessWidget {
     );
   }
 
-  /// DATE CHIP
-
   Widget _dateChip() {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 12,
-        vertical: 6,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
 
       decoration: BoxDecoration(
         color: secondaryColor.withValues(alpha: 0.08),
 
         borderRadius: BorderRadius.circular(30),
 
-        border: Border.all(
-          color: secondaryColor.withValues(alpha: 0.15),
-        ),
+        border: Border.all(color: secondaryColor.withValues(alpha: 0.15)),
       ),
 
       child: Text(
-        movie.releseDate,
+        movie.releaseDate,
 
         style: bodyStyle.copyWith(
           color: secondaryColor,
@@ -205,8 +170,6 @@ class MovieDetailScreen extends StatelessWidget {
       ),
     );
   }
-
-  /// ---------------- BODY ----------------
 
   SliverToBoxAdapter _buildBody() {
     return SliverToBoxAdapter(
@@ -287,22 +250,15 @@ class MovieDetailScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
 
             children: [
-              Text(
-                "Overview",
-
-                style: headingStyle.copyWith(
-                  fontSize: 20,
-                ),
-              ),
+              Text("Overview", style: headingStyle.copyWith(fontSize: 20)),
 
               const SizedBox(height: 10),
 
               Text(
-                movie.overView,
+                movie.overview,
 
                 style: overViewEssayTextStyle.copyWith(
-                  color:
-                      secondaryColor.withValues(alpha: 0.7),
+                  color: secondaryColor.withValues(alpha: 0.7),
                   height: 1.6,
                   fontSize: 14,
                 ),
@@ -325,9 +281,7 @@ class MovieDetailScreen extends StatelessWidget {
 
         borderRadius: BorderRadius.circular(22),
 
-        border: Border.all(
-          color: secondaryColor.withValues(alpha: 0.12),
-        ),
+        border: Border.all(color: secondaryColor.withValues(alpha: 0.12)),
 
         boxShadow: [
           BoxShadow(
@@ -340,23 +294,13 @@ class MovieDetailScreen extends StatelessWidget {
 
       child: Column(
         children: [
-          Buildinfo(
-            label: "Original Title",
-            value: movie.title,
-          ),
+          Buildinfo(label: "Original Title", value: movie.title),
 
-          Divider(
-            color: secondaryColor.withValues(alpha: 0.08),
-          ),
+          Divider(color: secondaryColor.withValues(alpha: 0.08)),
 
-          Buildinfo(
-            label: "Release Date",
-            value: movie.releseDate,
-          ),
+          Buildinfo(label: "Release Date", value: movie.releaseDate),
 
-          Divider(
-            color: secondaryColor.withValues(alpha: 0.08),
-          ),
+          Divider(color: secondaryColor.withValues(alpha: 0.08)),
 
           Buildinfo(
             label: "Vote Average",

@@ -17,6 +17,7 @@ class MovieProvider extends ChangeNotifier {
   List<Movie> _upcomingMovies = [];
   List<Movie> _searchResult = [];
   bool _isLoading = false;
+  bool _isLoaded = false;
   String? _errorMessage;
 
   List<Movie> get popularMovies => _popularMovies;
@@ -63,6 +64,8 @@ void clearSearch() {
 }
 
   Future<void> loadMovies() async {
+      if (_isLoaded) return;
+
     _isLoading = true;
     _errorMessage = null;
     notifyListeners();
@@ -73,6 +76,7 @@ void clearSearch() {
       _upcomingMovies = await _tmbdServices.getUpcomingMovies();
 
       _errorMessage = null;
+        _isLoaded = true; 
     } catch (e) {
       debugPrint("ERROR: $e");
       _errorMessage =

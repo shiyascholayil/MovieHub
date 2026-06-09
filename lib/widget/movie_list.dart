@@ -1,44 +1,86 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:moviehub/models/movie.dart';
 import 'package:moviehub/screens/moviedetails_screen.dart';
 import 'package:moviehub/widget/movie_card.dart';
 
-
-
-class MovieList extends StatelessWidget {
-  const MovieList({
-    super.key,
-    required this.movies,
-  });
+class MovieList extends StatefulWidget {
+  const MovieList({super.key, required this.movies});
 
   final List<Movie> movies;
 
   @override
+  State<MovieList> createState() => _MovieListState();
+}
+
+class _MovieListState extends State<MovieList> {
+  late final Box<Movie> box;
+
+  @override
+  void initState() {
+    super.initState();
+    box = Hive.box<Movie>('favorites');
+  }
+
+  @override
   Widget build(BuildContext context) {
-    if (movies.isEmpty) {
-      return Center(child: Text("No Movies available "));
+    if (widget.movies.isEmpty) {
+      return const Center(
+        child: Text(
+          "No Movies Available",
+          style: TextStyle(color: Colors.white70),
+        ),
+      );
     }
 
-    return GridView.builder(
-      padding: EdgeInsets.all(8),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 0.7,
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 8,
-      ),
-      itemCount: movies.length,
-      itemBuilder: (context, index) {
-        return MovieCard(movie: movies[index],
-         onTap: () {
-           Navigator.push(context,MaterialPageRoute(
-            builder:(context)=>
-                   MovieDetailScreen(movie:movies[index]),
-             ),);
-         },
-        );
+    final width = MediaQuery.of(context).size.width;
+    final crossAxisCount = width > 600 ? 3 : 2;
+
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: GridView.builder(
+        physics: const BouncingScrollPhysics(),
+        itemCount: widget.movies.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: crossAxisCount,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
         
-      },
+          childAspectRatio: 0.65, 
+        ),
+        itemBuilder: (context, index) {
+          final movie = widget.movies[index];
+
+          return MovieCard(
+            movie: movie,
+            isFavorite: box.containsKey(movie.id),
+            onFavoritePressed: () {
+              setState(() {
+                if (box.containsKey(movie.id)) {
+                  box.delete(movie.id);
+                } else {
+                  box.put(movie.id, movie);
+                }
+              });
+            },
+            onTap: () {
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (_, _, _) =>
+                      MovieDetailScreen(movie: movie),
+                  transitionsBuilder: (_, animation, _, child) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    );
+                  },
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
