@@ -28,7 +28,6 @@ A Flutter-based movie discovery application that allows users to explore trendin
 
   </tr>
   <tr>
-
     <td><img src="assets/images/4.jpeg" width="250"></td>
      <td><img src="assets/images/5.jpeg" width="250"></td> 
   </tr>
